@@ -1,7 +1,14 @@
-import express from 'express';
-import { getAllUsers } from '../controllers/userController';
+// src/interface/routes/userRoutes.ts
+import { Router } from "express";
+import { MockUserRepository } from "../../infrastructure/repositories/MockUserRepository";
+import { GetAllUsers } from "../../use-cases/GetAllUsers";
+import { UserController } from "../controllers/UserController";
 
-const router = express.Router();
+const router = Router();
+
+const userRepository = new MockUserRepository();
+const getAllUsers = new GetAllUsers(userRepository);
+const userController = new UserController(getAllUsers);
 
 /**
  * @swagger
@@ -32,6 +39,6 @@ const router = express.Router();
  *       404:
  *         description: Not Found
  */
-router.get('/', getAllUsers);
+router.get("/users", (req, res) => userController.getAll(req, res));
 
-export default router;
+export { router as userRoutes };
