@@ -7,21 +7,6 @@ info:
 servers:
   - url: "http://localhost:3000"
 
-components:
-  schemas:
-    User:
-      type: object
-      properties:
-        id:
-          type: string
-          example: "123"
-        name:
-          type: string
-          example: "John Doe"
-        email:
-          type: string
-          example: "john.doe@example.com"
-
 paths:
   /users:
     get:
@@ -41,3 +26,18 @@ paths:
           description: Bad Request
         404:
           description: Not Found
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "123"
+        name:
+          type: string
+          example: "John Doe"
+        email:
+          type: string
+          example: "john.doe@example.com"

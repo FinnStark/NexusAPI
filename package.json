@@ -20,6 +20,7 @@
   "homepage": "https://github.com/FinnStark/NexusAPI#readme",
   "dependencies": {
     "express": "^4.21.2",
+    "pg": "^8.13.3",
     "reflect-metadata": "^0.2.2",
     "swagger-jsdoc": "^6.2.8",
     "swagger-ui-express": "^5.0.1",

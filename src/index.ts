@@ -2,7 +2,8 @@ import 'reflect-metadata';
 import express from 'express';
 import {userRoutes} from './interface/routes/userRoutes';
 import config from './api.config'
-import { setupSwagger } from "./interface/swagger";
+import swaggerUi from "swagger-ui-express";
+import swaggerDocument from "./swagger/swaggerConfig";
 
 const app = express();
 
@@ -11,7 +12,7 @@ app.use(express.json());
 
 // Routes
 app.use('/users', userRoutes);
-setupSwagger(app);
+app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 const server = app.listen(config.PORT, () => {
     console.log(`Listening at http://localhost:${config.PORT}`);
