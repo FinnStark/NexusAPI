@@ -1,0 +1,43 @@
+openapi: "3.0.0"
+info:
+  title: "NexusAPI"
+  version: "1.0.0"
+  description: "Documentation API générée avec Swagger"
+
+servers:
+  - url: "http://localhost:3000"
+
+components:
+  schemas:
+    User:
+      type: object
+      properties:
+        id:
+          type: string
+          example: "123"
+        name:
+          type: string
+          example: "John Doe"
+        email:
+          type: string
+          example: "john.doe@example.com"
+
+paths:
+  /users:
+    get:
+      summary: Récupère la liste des utilisateurs
+      tags:
+        - "Users"
+      responses:
+        200:
+          description: Liste des utilisateurs
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: "#/components/schemas/User"
+        400:
+          description: Bad Request
+        404:
+          description: Not Found

@@ -39,6 +39,6 @@ const userController = new UserController(getAllUsers);
  *       404:
  *         description: Not Found
  */
-router.get("/users", (req, res) => userController.getAll(req, res));
+router.get("/", (req, res) => userController.getAll(req, res));
 
 export { router as userRoutes };

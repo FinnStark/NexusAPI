@@ -1,21 +1,6 @@
-import swaggerJsdoc from 'swagger-jsdoc';
+import yaml from "yamljs";
+import path from "path";
 
-const options = {
-  definition: {
-    openapi: '3.0.0',
-    info: {
-      title: 'NexusAPI',
-      version: '1.0.0',
-      description: 'Documentation API générée avec Swagger',
-    },
-    servers: [
-      {
-        url: 'http://localhost:3000',
-      },
-    ],
-  },
-  apis: ['./src/interface/routes/*.ts'],
-};
+const swaggerDocument = yaml.load(path.resolve(__dirname, "swagger.yaml"));
 
-const specs = swaggerJsdoc(options);
-export default specs;
+export default swaggerDocument;

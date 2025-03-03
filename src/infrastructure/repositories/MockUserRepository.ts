@@ -1,12 +1,15 @@
 // src/infrastructure/repositories/MockUserRepository.ts
 import { User } from "../../domain/entities/User";
 import { UserRepository } from "../../domain/interfaces/UserRepository";
+import fs from 'fs';
 
+const JSON_FILE_PATH = './src/json/users.json';
 export class MockUserRepository implements UserRepository {
   private users: User[] = [];
 
   async findAll(): Promise<User[]> {
-    return this.users;
+    const data = await fs.promises.readFile(JSON_FILE_PATH, 'utf-8');
+    return JSON.parse(data);
   }
 
   async findById(id: string): Promise<User | null> {

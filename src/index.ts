@@ -1,15 +1,13 @@
 import 'reflect-metadata';
 import express from 'express';
 import {userRoutes} from './interface/routes/userRoutes';
-import bodyParser from 'body-parser'
 import config from './api.config'
 import { setupSwagger } from "./interface/swagger";
 
 const app = express();
 
-// Middleware para manejar datos JSON
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended : true}));
+
+app.use(express.json());
 
 // Routes
 app.use('/users', userRoutes);
