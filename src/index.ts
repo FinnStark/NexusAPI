@@ -5,6 +5,8 @@ import config from './api.config'
 import swaggerUi from "swagger-ui-express";
 import swaggerDocument from "./swagger/swaggerConfig";
 
+require('dotenv').config()
+
 const app = express();
 
 
@@ -17,5 +19,6 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 const server = app.listen(config.PORT, () => {
     console.log(`Listening at http://localhost:${config.PORT}`);
     console.log(`Swagger http://localhost:${config.PORT}/api-docs`);
+    console.log(`Hello ${process.env.HELLO}`);
 });
 server.on('error', console.error)

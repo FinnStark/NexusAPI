@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/FinnStark/NexusAPI#readme",
   "dependencies": {
+    "dotenv": "^16.4.7",
     "express": "^4.21.2",
     "pg": "^8.13.3",
     "reflect-metadata": "^0.2.2",
