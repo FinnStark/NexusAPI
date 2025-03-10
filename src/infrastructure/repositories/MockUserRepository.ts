@@ -12,8 +12,13 @@ export class MockUserRepository implements UserRepository {
     return JSON.parse(data);
   }
 
-  async findById(id: string): Promise<User | null> {
-    return this.users.find(user => user.id === id) || null;
+  async find(): Promise<User[]> {
+    const data = await fs.promises.readFile(JSON_FILE_PATH, 'utf-8');
+    return JSON.parse(data);
+  }
+
+  async findById(id: number): Promise<User | null> {
+    return this.users.find(user => user._id === id) || null;
   }
 
   async create(user: User): Promise<User> {
@@ -22,13 +27,13 @@ export class MockUserRepository implements UserRepository {
   }
 
   async update(user: User): Promise<void> {
-    const index = this.users.findIndex(b => b.id === user.id);
+    const index = this.users.findIndex(b => b._id === user._id);
     if (index !== -1) {
       this.users[index] = user;
     }
   }
 
-  async delete(id: string): Promise<void> {
-    this.users = this.users.filter(user => user.id !== id);
+  async delete(id: number): Promise<void> {
+    this.users = this.users.filter(user => user._id !== id);
   }
 }

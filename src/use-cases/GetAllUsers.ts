@@ -4,6 +4,6 @@ export class GetAllUsers {
   constructor(private userRepository: UserRepository) {}
 
   async execute() {
-    return await this.userRepository.findAll();
+    return await this.userRepository.find();
   }
 }

@@ -1,0 +1,15 @@
+// eslint.config.js
+export default [
+    {
+        "env": {
+          "node": true,
+          "es6": true
+        },
+        "extends": ["eslint:recommended", "plugin:@typescript-eslint/recommended", "prettier"],
+        "plugins": ["@typescript-eslint", "prettier"],
+        "parser": "@typescript-eslint/parser",
+        "rules": {
+          "prettier/prettier": "error"
+        }
+      }
+];

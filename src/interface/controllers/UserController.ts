@@ -11,6 +11,7 @@ export class UserController {
     const users = await this.getAllUsers.execute();
     res.json(users);
   }
+  
   async create(req: Request, res: Response){
     const dto = Object.assign(new CreateUserDto(), req.body);
     const errors = await validate(dto);

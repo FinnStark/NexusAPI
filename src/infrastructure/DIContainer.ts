@@ -1,10 +1,9 @@
 // src/infrastructure/DIContainer.ts
-import { MockUserRepository } from "./repositories/MockUserRepository";
+import { MongoUserRepository } from "./repositories/MongoUserRepository";
 import { GetAllUsers } from "../use-cases/GetAllUsers";
 
-// Dependency Injection
 class DIContainer {
-  private static _userRepository = new MockUserRepository();
+  private static _userRepository = new MongoUserRepository();
 
   static getUserRepository() {
     return this._userRepository;
